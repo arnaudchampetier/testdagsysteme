@@ -6,7 +6,6 @@ function App() {
     <div className="App">
       <h1>Partie Front End</h1>
       <Classement />
-      <h2> Partie Back End</h2>
     </div>
   );
 }
