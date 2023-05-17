@@ -1,32 +1,58 @@
-.App {
-  text-align: center;
-  background-color: #4171cf;
-  min-height: 110vh;
-  font-size: large;
-  color: rgb(29, 27, 27);
-  
-
-
-
-}
-
-
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: url('./assets/marathon.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;  color: rgb(8, 8, 8);
 }
+
+.App {
+  text-align: center;
+
+}
+
+h1 {
+  color: rgb(19, 18, 18);
+  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+}
+
+
+h1 .icon {
+  width: 30px; 
+  height: 30px;
+}
+
+
+h2 {
+  background-color: antiquewhite;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #b1cbd1;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+li p {
+  font-weight: bold;
+}
+
+li span {
+  font-style: italic;
+}
+
 
 

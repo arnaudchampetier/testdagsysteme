@@ -1,11 +1,14 @@
+import React from "react";
 import "./App.css";
-import Classement from "./Classement";
+import Ranking from "./Ranking";
 
 function App() {
   return (
     <div className="App">
-      <h1>Partie Front End</h1>
-      <Classement />
+      <h1>Test Technique Dag System</h1>
+
+      <h2>Partie Front End</h2>
+      <Ranking />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import badgeImage from "./assets/badge.png";
 
 const classement = [
   {
@@ -53,7 +54,7 @@ const classement = [
   },
 ];
 
-//1 Trier le classement par temps avec la méthode sort
+//Consigne 1 Trier le classement par temps avec la méthode sort()
 
 const classementTri = classement.sort(
   (concurrent1, concurrent2) =>
@@ -64,15 +65,22 @@ const classementTri = classement.sort(
 
 function Classement() {
   return (
-    //2  Mapper le classement trié dans le return avec la méthode map
+    // Consigne 2  Mapper le classement trié dans le return avec la méthode map()
 
     <div>
-      <h1>Classement</h1>
+      <h1>
+        <img src={badgeImage} alt="Badge gauche" className="icon" />
+        Classement des athlètes
+        <img src={badgeImage} alt="Badge droite" className="icon" />
+      </h1>
       <ul>
         {classementTri.map((concurrent, index) => (
           <li key={index}>
-            <p>Nom du concurrent : {concurrent.participant}</p> - Temps de
-            parcours : : {concurrent.dateArrivee - concurrent.dateDepart}{" "}
+            <p>
+              Classement: {index + 1} <br></br> Nom du concurrent :{" "}
+              {concurrent.participant}
+            </p>{" "}
+            Chrono réalisé : {concurrent.dateArrivee - concurrent.dateDepart}{" "}
             secondes
           </li>
         ))}
