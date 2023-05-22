@@ -54,37 +54,57 @@ const classement = [
   },
 ];
 
-//Consigne 1 Trier le classement par temps avec la méthode sort()
-
-const classementTri = classement.sort(
-  (concurrent1, concurrent2) =>
-    concurrent1.dateArrivee -
-    concurrent1.dateDepart -
-    (concurrent2.dateArrivee - concurrent2.dateDepart)
-);
-
 function Classement() {
-  return (
-    // Consigne 2  Mapper le classement trié dans le return avec la méthode map()
+  // Consigne 1 : Trier le classement par temps avec la méthode sort()
+  const classementTri = classement.sort(
+    (concurrent1, concurrent2) =>
+      concurrent1.dateArrivee -
+      concurrent1.dateDepart -
+      (concurrent2.dateArrivee - concurrent2.dateDepart)
+  );
 
+  // Consigne 2 : Ajuster le classement en cas d'égalité de temps
+  classementTri.forEach((concurrent, index) => {
+    if (
+      index > 0 &&
+      concurrent.dateArrivee - concurrent.dateDepart ===
+        classementTri[index - 1].dateArrivee -
+          classementTri[index - 1].dateDepart
+    ) {
+      concurrent.classement = classementTri[index - 1].classement;
+    } else {
+      concurrent.classement = index + 1;
+    }
+  });
+
+  function formatTemps(temps) {
+    const date = new Date(temps * 1000);
+    const heures = date.getUTCHours().toString().padStart(2, "0");
+    const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+    const secondes = date.getUTCSeconds().toString().padStart(2, "0");
+
+    return `${heures}:${minutes}:${secondes}`;
+  }
+
+  return (
     <div>
       <h1>
         <img src={badgeImage} alt="Badge gauche" className="icon" />
         Classement des athlètes
         <img src={badgeImage} alt="Badge droite" className="icon" />
       </h1>
-      <ul>
+      <ol>
         {classementTri.map((concurrent, index) => (
           <li key={index}>
             <p>
-              Classement: {index + 1} <br></br> Nom du concurrent :{" "}
+              Classement: {concurrent.classement} <br /> Nom du concurrent :{" "}
               {concurrent.participant}
             </p>{" "}
-            Chrono réalisé : {concurrent.dateArrivee - concurrent.dateDepart}{" "}
-            secondes
+            Chrono réalisé :{" "}
+            {formatTemps(concurrent.dateArrivee - concurrent.dateDepart)}{" "}
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }
